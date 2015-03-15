@@ -1,22 +1,80 @@
 *	{
-	outline: 1px solid black;
+	outline: 0px solid black;
 	margin: 0;
 	padding: 0;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
 }
 
 ul {
 	list-style-type: none;
 }
 
-.row:before, .row:after {
-	content: '';
-	display: table;
-}
+	/*graphic design*/
+	body {
+		background-color: #D7DDDB;
+	}
+	
+	.coll {
+		border-radius: 10px;
+		padding: 0.4%;
+	}
+	
+	.coll > p {
+		font-family: 'Lato', Calibri, Arial, sans-serif;
+		color: #2173a3;
+  		text-align: center;
+		min-height: 100px;
+		font-size: 1.5em;
+	}
 
-.row:after {
-	clear: both;
-}
+	.coll[class$="-1"]{
+		background-color: #4F8A83;
+	}
+	
+	.coll[class$="-2"]{
+		background-color: #E76278;
+	}
+	
+	.coll[class$="-3"]{
+		background-color: #FAC699;
+	}
+	
+	.coll[class$="-4"]{
+		background-color: #712164;
+	}
+	
+	.coll[class$="-5"]{
+		background-color: #BF4E30;
+	}
+	
+	.coll[class$="-6"]{
+		background-color: #093824;
+	}
+	
+	.coll[class$="-7"]{
+		background-color: #92A7E0;
+	}
+	
+	.coll[class$="-8"]{
+		background-color: #4381C1;
+	}
+	
+	.coll[class$="-9"]{
+		background-color: #880D1E;
+	}
+	
+	.coll[class$="-10"]{
+		background-color: #F6BE00;
+	}
 
+/*hiddens*/
 .hidden-small {
 	display: none;
 }
@@ -29,9 +87,20 @@ ul {
 	display: none;
 }
 
+/*layout*/
+
 .row > .coll {
 	float: left;
 	margin: 0.3% 1.6%;
+}
+
+.row:before, .row:after {	/*clearfix*/
+	content: '';
+	display: table;
+}
+
+.row:after {	/*clearfix*/
+	clear: both;
 }
 
 .row > .coll-1-1 { 	 width: 96.800000%; }
@@ -90,6 +159,7 @@ ul {
 .row > .coll-9-10 { 	 width: 96.800000%; }
 .row > .coll-10-10 { 	 width: 96.800000%; }
 
+/*fixed layout*/
 .row-fixed > .coll {
 	float: left;
 	margin: 0.3% 0.8%;
@@ -157,7 +227,6 @@ ul {
 .row-fixed > .coll-8-10 { 	 width: 77.120000%; }
 .row-fixed > .coll-9-10 { 	 width: 86.960000%; }
 .row-fixed > .coll-10-10 { 	 width: 96.800000%; }
-
 
 @media (min-width: 400px) {
 	.hidden-small {
@@ -235,12 +304,24 @@ ul {
 }
 
 @media (min-width: 600px) {
-	.coll {
-		background-color: red;
-	}
+
 }
 
 @media (min-width: 800px) {
+	.max-size-800 {	
+		max-width: 800px;
+		margin: auto auto;
+	}
+	
+	.max-size-1000 {	
+		max-width: 1000px;
+		margin: auto auto;
+	}
+	
+	.max-size-1200 {	
+		max-width: 1200px;
+		margin: auto auto;
+	}
 
 }
 
