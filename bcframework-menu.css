@@ -1,0 +1,21 @@
+.plug-menu .plug-menu-item{
+	display: inline;
+}
+
+.plug-menu{
+		/*display: none;*/
+}
+
+.plug-menu-roller {
+	display: block;
+}
+
+@media (min-width: 800px) {
+	.plug-menu-roller {
+		display: none;
+	}
+
+	.plug-menu{
+		display: block;
+	}
+}

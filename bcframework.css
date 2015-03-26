@@ -13,12 +13,22 @@ html {
 }
 
 ul {
+	margin: 0;
+	padding: 0;
 	list-style-type: none;
 }
 
 body {
 	font-size: 100%;
     line-height: 1.6875;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
 }
 
 
@@ -36,12 +46,12 @@ body {
 }
 
 /*layout*/
-.coll {
+[class*="coll"] {
 	margin: 0.3% 1.6% 0.3% 0;
 	float: left;
 }
 
-.coll:last-child{
+[class*="coll"]:last-child{
 	margin-right: 0;
 }
 
@@ -49,11 +59,15 @@ body {
 	margin: 0 1.6%;
 }
 
-[class*="row"]:before, [class*="row"]:after {	/*clearfix*/
+.container:before, 
+.container:after,
+[class*="row"]:before, 
+[class*="row"]:after {	/*clearfix*/
 	content: '';
 	display: table;
 }
 
+.container:after,
 [class*="row"]:after {	/*clearfix*/
 	clear: both;
 }
@@ -117,7 +131,7 @@ body {
 } 
 
 /*fixed layout*/
-.row-fixed > .coll:last-child {
+.row-fixed > [class*="coll"]:last-child {
 	margin-right: 0%; 
 }
 
