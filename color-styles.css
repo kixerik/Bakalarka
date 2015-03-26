@@ -113,21 +113,12 @@
 		background-color: rgb(186, 186, 186);
 	}
 
-	.plug-menu-item .plug-submenu{
-		overflow: hidden;
-		max-height: 0;
-		transition: max-height 0.5s ease-in-out;
-	}
-
-	.plug-menu-item:hover .plug-submenu{
-		max-height: 500px;
-	}
+	
 
 	.plug-menu-roller{
 		background-color: #BCB8A7;
 		  height: 45px;
 		  margin-top: 10px;
-		  border-radius: 10px 10px 0 0;
 		  border-bottom: 3px solid rgb(84, 84, 84);
 		  text-align: center;
 		  font-size: 20px;
