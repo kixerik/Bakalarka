@@ -87,44 +87,56 @@
 		border-radius: 0px;
 	}
 
-	.plug-menu-item .h1,
-	.plug-menu-item .h2{
+	.plug-menu-item .plug-menu-head-1,
+	.plug-menu-item .plug-menu-head-2,
+	.plug-menu-item .plug-menu-head-3{
 		padding: 4% 5%;
 		color: inherit;
 		text-decoration: none;
 		display: block;
 	}
 
-	.plug-menu-item .h1{
+	.plug-menu-item .plug-menu-head-1{
 		border-bottom: 5px solid #712164;
 	}
 
-	.plug-menu-item:hover .h1 {
+	.plug-menu-item:hover .plug-menu-head-1 {
 		border-bottom: 5px solid rgb(9, 56, 36);
 	}
 
-	.plug-menu-item .h2{
+	.plug-menu-item .plug-menu-head-2{
 		border-bottom: 1px solid rgb(136, 136, 136);
 		background-color: white;
 		padding-left: 12%;
 	}
 
-	.plug-menu-item .h2:hover {
+	.plug-menu-item .plug-menu-head-2:hover {
 		background-color: rgb(186, 186, 186);
 	}
 
-	
+	.plug-menu-item .plug-menu-head-3 {
+		padding-left: 19%;
+		border-bottom: 1px solid rgb(136, 136, 136);
+		background-color: rgb(186, 186, 186);
+	}
+
+	.plug-menu-item.clicked .plug-menu-head-3 {
+		background-color: rgba(204, 205, 194, 1);
+	}
 
 	.plug-menu-roller{
 		background-color: #BCB8A7;
 		  height: 45px;
-		  margin-top: 10px;
 		  border-bottom: 3px solid rgb(84, 84, 84);
-		  text-align: center;
+		  text-align: left;
 		  font-size: 20px;
 		  font-weight: bold;
 		  padding-top: 5px;
 		  color: rgb(84, 84, 84);
+	}
+
+	.plug-menu-roller img{
+		 height: 36px;
 	}
 
 

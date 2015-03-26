@@ -1,7 +1,3 @@
-.plug-menu .plug-menu-item{
-	display: inline;
-}
-
 .plug-menu{
 	overflow: hidden;
 	max-height: 0;
@@ -9,20 +5,20 @@
 }
 
 .plug-menu.clicked{
-	max-height: 1000px;
+	max-height: 10000px;
 }
 
 .plug-menu-roller {
 	display: block;
 }
 
-.plug-menu-item .plug-submenu{
+.plug-menu-item > .plug-menu{
 	overflow: hidden;
 	max-height: 0;
 	transition: max-height 0.5s ease-in-out;
 }
-.plug-menu-item.clicked .plug-submenu{
-	max-height: 1000px;
+.plug-menu-item.clicked > .plug-menu{
+	max-height: 10000px;
 }
 
 @media (min-width: 800px) {
@@ -31,6 +27,6 @@
 	}
 
 	.plug-menu{
-		max-height: 1000px;
+		max-height: 10000px;
 	}
 }

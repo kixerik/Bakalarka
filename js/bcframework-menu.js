@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	var $menu = $('.plug-menu'),
-		$menuItem = $('.plug-menu-item'),
+		$menuHead = $('[class^="plug-menu-head"]'),
 		$menuRoller = $('.plug-menu-roller');
 
 	$menuRoller.click(function(){
@@ -12,12 +12,12 @@ $(document).ready(function(){
 		}	
 	})
 
-	$menuItem.click(function(){
-		if (!$(this).hasClass('clicked')) {
-			$(this).addClass('clicked');
+	$menuHead.click(function(){
+		if (!$(this).parent().hasClass('clicked')) {
+			$(this).parent().addClass('clicked');
 		}
 		else{
-			$(this).removeClass('clicked');
+			$(this).parent().removeClass('clicked');
 		}		
 	});
 });
