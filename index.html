@@ -6,10 +6,12 @@
 	<!-- css -->
 	<link rel="stylesheet" type="text/css" href="bcframework.css">
 	<link rel="stylesheet" type="text/css" href="bcframework-menu.css">
+	<link rel="stylesheet" type="text/css" href="bcframework-slider.css">
 	<link rel="stylesheet" type="text/css" href="color-styles.css">
 	<!-- js -->
 	<script src="js/jquery-1.11.2.js"></script>
 	<script type="text/javascript" src="js/bcframework-menu.js"></script>
+	<script type="text/javascript" src="js/bcframework-slider.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 
@@ -67,16 +69,36 @@
 					</li>
 				</ul>
 		</nav>
+		<div class="max-size-1200">
+			<h1>.slider</h1>
+			<div class="plug-slider">
+	            <ul class="plug-slider-container" >
+	               	<li class="plug-slider-item"><img src="imgs/Penthouse-D-rendering_penthouses_optimized1.jpg"></li>
+	               	<li class="plug-slider-item"><img src="imgs/RP-PHILIP-HOUSE-01-INT-PH-S-FINAL-2_optimized3.jpg"></li>
+	               	<li class="plug-slider-item"><img src="imgs/RP-PHILIP-HOUSE-04-EXT-PH-N-FINAL-5_DDM_optimized.jpg"></li>             
+	            </ul>
+            </div>
+		</div>
+		<div>
+			<h1>.full screen slider</h1>
+			<div class="plug-slider">
+	            <ul class="plug-slider-container" >
+	               	<li class="plug-slider-item"><img src="imgs/Penthouse-D-rendering_penthouses_optimized1.jpg"></li>
+	               	<li class="plug-slider-item"><img src="imgs/RP-PHILIP-HOUSE-01-INT-PH-S-FINAL-2_optimized3.jpg"></li>
+	               	<li class="plug-slider-item"><img src="imgs/RP-PHILIP-HOUSE-04-EXT-PH-N-FINAL-5_DDM_optimized.jpg"></li>             
+	            </ul>
+            </div>
+		</div>
 
 		<div id="1" class="max-size-1200">
 			<h1>.zakladny grid</h1>
 			<div>
-				<div class="row">
+				<div class="row color">
 					<div class="coll-1-1">
 						<p>.coll-1-1</p>
 					</div>
 				</div>
-				<div class="row row-2">
+				<div class="row color row-2">
 					<div class="coll-1-2"> 
 						<p>.coll-1-2</p>
 					</div>
@@ -84,7 +106,7 @@
 						<p>.coll-1-2</p>
 					</div>
 				</div>
-				<div class="row row-3">
+				<div class="row color row-3">
 					<div class="coll-1-3"> 
 						<p>.coll-1-3</p>
 					</div>
@@ -92,7 +114,7 @@
 						<p>.coll-2-3</p>
 					</div>
 				</div>
-				<div class="row row-4">
+				<div class="row color row-4">
 					<div class="coll-1-4"> 
 						<p>.coll-1-4</p>
 					</div>
@@ -103,7 +125,7 @@
 						<p>.coll-1-4</p>
 					</div>
 				</div>
-				<div class="row row-5">
+				<div class="row color row-5">
 					<div class="coll-1-5"> 
 						<p>.coll-1-5</p>
 					</div>
@@ -114,7 +136,7 @@
 						<p>.coll-2-5</p>
 					</div>
 				</div>
-				<div class="row row-6">
+				<div class="row color row-6">
 					<div class="coll-1-6"> 
 						<p>.coll-1-6</p>
 					</div>
@@ -125,7 +147,7 @@
 						<p>.coll-3-6</p>
 					</div>
 				</div>
-				<div class="row row-7">
+				<div class="row color row-7">
 					<div class="coll-1-7"> 
 						<p>.coll-1-7</p>
 					</div>
@@ -139,7 +161,7 @@
 						<p>.coll-1-7</p>
 					</div>
 				</div>
-				<div class="row row-8">
+				<div class="row color row-8">
 					<div class="coll-1-8"> 
 						<p>.coll-1-8</p>
 					</div>
@@ -153,7 +175,7 @@
 						<p>.coll-2-8</p>
 					</div>
 				</div>
-				<div class="row row-9">
+				<div class="row color row-9">
 					<div class="coll-1-9"> 
 						<p>.coll-1-9</p>
 					</div>
@@ -167,7 +189,7 @@
 						<p>.coll-4-9</p>
 					</div>
 				</div>
-				<div class="row row-10">
+				<div class="row color row-10">
 					<div class="coll-1-10"> 
 						<p>.coll-1-10</p>
 					</div>
@@ -187,12 +209,12 @@
 			<h1>.stlpce ktore su vzdy rovnake</h1>
 			<p class="popis">Nahradením triedy "row" na "row-fixed" elementu, ktorý obaľuje stĺpce, nastavíme aby usporiadanie stlpcov v tomto riadku zostalo nezmenene.</p>
 			<div>
-				<div class="row-fixed">
+				<div class="row-fixed color">
 					<div class="coll-1-1">
 						<p>.coll-1-1</p>
 					</div>
 				</div>
-				<div class="row-fixed">
+				<div class="row-fixed color">
 					<div class="coll-1-3">
 						<p>.coll-1-3</p>
 					</div>
@@ -200,12 +222,12 @@
 						<p>.coll-2-3</p>
 					</div>
 				</div>
-				<div class="row-fixed">
+				<div class="row-fixed color">
 					<div class="coll-1-1">
 						<p>.coll-1-1</p>
 					</div>
 				</div>
-				<div class="row-fixed">
+				<div class="row-fixed color">
 					<div class="coll-1-4">
 						<p>.coll-1-4</p>
 					</div>
@@ -222,12 +244,12 @@
 			<h1>.elementy ktore sa skryvaju pri nejakom rozliseni</h1>
 			<p class="popis">Pridanim triedy "hidden-small" skryje obsah pod 400px, "hidden-medium" pod 800px, "hidden-large" nad 1200px</p>
 			<div>
-				<div class="row">
+				<div class="row color">
 					<div class="hidden-small coll-1-1">
 						<p>.hidden-small .coll-1-1</p>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row color">
 					<div class="coll-1-2">
 						<p>.coll-1-2</p>
 					</div>
@@ -235,12 +257,12 @@
 						<p>.coll-1-2</p>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row color">
 					<div class="hidden-medium coll-1-1">
 						<p>.hidden-medium .coll-1-1</p>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row color">
 					<div class="coll-1-3">
 						<p>.coll-1-3</p>
 					</div>
@@ -251,7 +273,7 @@
 						<p>.coll-1-3</p>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row color">
 					<div class="hidden-large coll-1-1">
 						<p>.hidden-large .coll-1-1</p>
 					</div>
@@ -265,16 +287,16 @@
 				Bez pridanej triedy takehoto typu automaticky velkost na 100%</p>
 			</div>
 			<div>
-				<div class="color max-size-800">
+				<div class="brawn max-size-800">
 					<p>.max-size-800</p>
 				</div>
-				<div class="color max-size-1000">
+				<div class="brawn max-size-1000">
 					<p>.max-size-1000</p>
 				</div>
-				<div class="color max-size-1200">
+				<div class="brawn max-size-1200">
 					<p>.max-size-1200</p>
 				</div>
-				<div class="color">
+				<div class="brawn">
 					<p>100%</p>
 				</div>				
 			</div>

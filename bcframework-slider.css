@@ -1,0 +1,38 @@
+.plug-slider-item img{
+	max-width: 100%;
+}
+
+.plug-slider-item {
+}
+
+.plug-slider{
+    overflow: hidden;
+}
+
+.plug-slider-container{
+    max-height: 100%;
+    overflow: hidden;
+    -webkit-transform: translate3d(0px, 0px, 0px); 
+    -moz-transform: translate3d(0px, 0px, 0px); 
+    -ms-transform: translate3d(0px, 0px, 0px); 
+    transform: translate3d(0px, 0px, 0px);  
+    -webkit-transition: 0s;
+    -moz-transition: 0s;
+    -ms-transition: 0s;
+    transition: 0s;     
+}
+
+.plug-slider-container:before, .plug-slider-container:after{
+    content:"";
+    display: table;
+}
+
+.plug-slider-container:after{
+    clear: both;
+}
+
+.plug-slider-item{
+    float: left;
+    /*display: block;*/
+    cursor:pointer;
+}

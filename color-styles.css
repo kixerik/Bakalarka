@@ -3,7 +3,7 @@
 		background-color: #D7DDDB;
 	}
 
-	.color {
+	.brawn {
 		background-color: #71525C;
 	}
 
@@ -15,12 +15,12 @@
   		margin: 5% 3% 1% 9%;
 	}
 	
-	[class*="coll"], .color {
+	.color [class*="coll"], .brawn {
 		border-radius: 10px;
 		padding: 0.4%;
 	}
 
-	[class*="coll"] > p, .color > p {
+	.color [class*="coll"] > p, .brawn > p {
 		display: block;
 		padding: 30px 0;
 		font-family: 'Lato', Calibri, Arial, sans-serif;
@@ -30,43 +30,43 @@
   		font-weight: 300;
 	}
 
-	[class*="coll"][class$="-1"]{
+	.color [class*="coll"][class$="-1"]{
 		background-color: #4F8A83;
 	}
 	
-	[class*="coll"][class$="-2"]{
+	.color [class*="coll"][class$="-2"]{
 		background-color: #E76278;
 	}
 	
-	[class*="coll"][class$="-3"]{
+	.color [class*="coll"][class$="-3"]{
 		background-color: #FAC699;
 	}
 	
-	[class*="coll"][class$="-4"]{
+	.color [class*="coll"][class$="-4"]{
 		background-color: #712164;
 	}
 	
-	[class*="coll"][class$="-5"]{
+	.color [class*="coll"][class$="-5"]{
 		background-color: #BF4E30;
 	}
 	
-	[class*="coll"][class$="-6"]{
+	.color [class*="coll"][class$="-6"]{
 		background-color: #093824;
 	}
 	
-	[class*="coll"][class$="-7"]{
+	.color [class*="coll"][class$="-7"]{
 		background-color: #92A7E0;
 	}
 	
-	[class*="coll"][class$="-8"]{
+	.color [class*="coll"][class$="-8"]{
 		background-color: #4381C1;
 	}
 	
-	[class*="coll"][class$="-9"]{
+	.color [class*="coll"][class$="-9"]{
 		background-color: #880D1E;
 	}
 	
-	[class*="coll"][class$="-10"]{
+	.color [class*="coll"][class$="-10"]{
 		background-color: #F6BE00;
 	}
 
@@ -144,6 +144,11 @@
 	.plug-menu {
 		background-color: inherit;
 	}
+}
+
+/*slider design*/
+.plug-slider {
+	max-height: 500px;
 }
 	
 
