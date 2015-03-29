@@ -3,6 +3,7 @@
 }
 
 .plug-slider-item {
+    text-align: center;
 }
 
 .plug-slider{
@@ -35,4 +36,5 @@
     float: left;
     /*display: block;*/
     cursor:pointer;
+    text-align: center;
 }

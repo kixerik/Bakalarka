@@ -13,7 +13,21 @@ $(document).ready(function(){
         clicking,   //true ak drzim slider
         aTransform; //finalna hodnota transformu po pusteni mysi(posunuti slidera)   
         
+    function scrollUpdate(e){
+        $(window).scrollTop($(window).scrollTop() + (clickY - e.pageY));
+    }
         
+    function redraw(e){
+        aTransform = parseInt(e.attr("slide"))*(-parseInt(e.find(".plug-slider-item").css("width"))); 
+        e.find(".plug-slider-container").css("-webkit-transform","translate3d("+aTransform+"px, 0px, 0px)");
+        e.find(".plug-slider-container").css("-moz-transform","translate3d("+aTransform+"px, 0px, 0px)");                
+        e.find(".plug-slider-container").css("-ms-transform","translate3d("+aTransform+"px, 0px, 0px)");   
+        e.find(".plug-slider-container").css("transform","translate3d("+aTransform+"px, 0px, 0px)"); 
+        e.find(".plug-slider-container").css("-webkit-transition","0s");
+        e.find(".plug-slider-container").css("-moz-transition","0s");
+        e.find(".plug-slider-container").css("-ms-transition","0s"); 
+        e.find(".plug-slider-container").css("transition","0s"); 
+    }
 
     function calculateDistance(mouseXclick, mouseX) {
         return mouseX-mouseXclick;
@@ -71,26 +85,27 @@ $(document).ready(function(){
     }
     
     function mUp(){     //pustim slider
+        if(clicking == true){
+            if(-distance > parseInt($el.css("width"))/5){ //posuvanie slideru mysou vlavo o 1/5tinu?
+                mLeft();    //posuniem sa o slide dolava
+            }
+            if(distance > parseInt($el.css("width"))/5){ //posuvanie slideru mysou vpravo o 1/5tinu?
+                mRight();   //posuniem sa o slide doprava
+            }
+
+            aTransform = slide*(-parseInt($el.css("width")));   //hodnota transformu pre zobrazenie slidu v premenej slide
+            $element.css("-webkit-transform","translate3d("+aTransform+"px, 0px, 0px)");
+            $element.css("-moz-transform","translate3d("+aTransform+"px, 0px, 0px)");                
+            $element.css("-ms-transform","translate3d("+aTransform+"px, 0px, 0px)");   
+            $element.css("transform","translate3d("+aTransform+"px, 0px, 0px)"); 
+            $element.css("-webkit-transition","1s");
+            $element.css("-moz-transition","1s");
+            $element.css("-ms-transition","1s"); 
+            $element.css("transition","1s"); 
+            
+            distance = 0; //pretoze mousedown na elemente sa nemusi vykonat 
+        }
         clicking = false;
-        
-        if(-distance > parseInt($el.css("width"))/5){ //posuvanie slideru mysou vlavo o 1/5tinu?
-            mLeft();    //posuniem sa o slide dolava
-        }
-        if(distance > parseInt($el.css("width"))/5){ //posuvanie slideru mysou vpravo o 1/5tinu?
-            mRight();   //posuniem sa o slide doprava
-        }
-      
-        aTransform = slide*(-parseInt($el.css("width")));   //hodnota transformu pre zobrazenie slidu v premenej slide
-        $element.css("-webkit-transform","translate3d("+aTransform+"px, 0px, 0px)");
-        $element.css("-moz-transform","translate3d("+aTransform+"px, 0px, 0px)");                
-        $element.css("-ms-transform","translate3d("+aTransform+"px, 0px, 0px)");   
-        $element.css("transform","translate3d("+aTransform+"px, 0px, 0px)"); 
-        $element.css("-webkit-transition","1s");
-        $element.css("-moz-transition","1s");
-        $element.css("-ms-transition","1s"); 
-        $element.css("transition","1s"); 
-        
-        distance = 0; //pretoze mousedown na elemente sa nemusi vykonat 
     }
     //---------ACTION LISTENERS
     $clickerSlider.mousedown(function( event ) {    //stlacim mys na slideri
@@ -129,6 +144,7 @@ $(document).ready(function(){
         // if (typeof event.originalEvent.touches !== 'undefined' && event.originalEvent.touches.length > 0) {
             var touch = event.originalEvent.touches[0];
             mMove(touch.pageX);
+            scrollUpdate(touch.pageY);
             return false;
         // }
     });
@@ -178,4 +194,23 @@ $(document).ready(function(){
         $(this).attr("slide",slide);
     });
 
+    window.setInterval(function(){   
+        $clickerSlider.each(function(){
+            $slider = $(this);
+            $element = $(this).find(".plug-slider-container");
+            $el = $(this).find(".plug-slider-item");
+            slide = parseInt($(this).attr("slide"));
+            maxSlide = parseInt($el.length-1);
+            mLeft();
+            aTransform = slide*(-parseInt($(this).find(".plug-slider-item").css("width"))); 
+            $(this).find(".plug-slider-container").css("-webkit-transform","translate3d("+aTransform+"px, 0px, 0px)");
+            $(this).find(".plug-slider-container").css("-moz-transform","translate3d("+aTransform+"px, 0px, 0px)");                
+            $(this).find(".plug-slider-container").css("-ms-transform","translate3d("+aTransform+"px, 0px, 0px)");   
+            $(this).find(".plug-slider-container").css("transform","translate3d("+aTransform+"px, 0px, 0px)"); 
+            $(this).find(".plug-slider-container").css("-webkit-transition","1s");
+            $(this).find(".plug-slider-container").css("-moz-transition","1s");
+            $(this).find(".plug-slider-container").css("-ms-transition","1s"); 
+            $(this).find(".plug-slider-container").css("transition","1s");
+        });
+    }, 7000);
 });
