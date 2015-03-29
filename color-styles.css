@@ -76,10 +76,19 @@
 	}
 
 	/*menu design*/
-	.plug-menu {
+	.mainmenu.plug-menu {
+		float: right;
+		/*width: 100%;*/
 		max-width: 800px;
 		background-color: rgba(166, 166, 166, 0.24);
 	}
+
+/*	@media (min-width: 800px) {
+		.plug-menu {
+			width: 800px;
+		}
+	}*/
+
 
 	.plug-menu .plug-menu-item{
 		padding: 0%;
@@ -141,7 +150,7 @@
 
 
 @media (min-width: 800px) {
-	.plug-menu {
+	.mainmenu.plug-menu {
 		background-color: inherit;
 	}
 }

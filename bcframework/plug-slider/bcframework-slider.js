@@ -51,9 +51,10 @@ $(document).ready(function(){
     
     function mMove(pageXmove){  //hybem so sliderom
         var transform,  //hodnota od laveho kraja na aku sa ma transformovat pri pohybe sliderom 
-            rLimit = maxSlide*parseInt($el.css("width")), //pravy limit hodnoty transform
+            rLimit, //pravy limit hodnoty transform
             lLimit = 0; //pravy limit hodnoty transform
         if( clicking == true ){     //je kliknute
+            rLimit = maxSlide*parseInt($el.css("width")); //pravy limit hodnoty transform
             distance = calculateDistance( mXclick, pageXmove ); //vzdialenost od miesta kliku
             transform = aTransform+distance;    //priebezna hodnota pre efekt posuvania 
             if(transform > lLimit){     //posuvam za lavy okraj kde nic nieje
@@ -108,22 +109,28 @@ $(document).ready(function(){
     });
     //MOBILE
     $clickerSlider.on('touchstart click', function (event) {    //stlacim na slider
-        var touch = event.originalEvent.touches[0];
-        $slider = $(this);
-        $element = $(this).find(".plug-slider-container");
-        $el = $(this).find(".plug-slider-item");
-        slide = parseInt($(this).attr("slide"));
-        maxSlide = parseInt($el.length-1);
-        mDown(touch.pageX);
+        // if (typeof event.originalEvent.touches !== 'undefined' && event.originalEvent.touches.length > 0) {
+            var touch = event.originalEvent.touches[0];
+            $slider = $(this);
+            $element = $(this).find(".plug-slider-container");
+            $el = $(this).find(".plug-slider-item");
+            slide = parseInt($(this).attr("slide"));
+            maxSlide = parseInt($el.length-1);
+            mDown(touch.pageX);
+        // }
     });
    $clickerSlider.on('touchend', function (event) {        //pustim slider
-        var touch = event.originalEvent.touches[0];
-        mUp();
+        // if (typeof event.originalEvent.touches !== 'undefined' && event.originalEvent.touches.length > 0) {
+            var touch = event.originalEvent.touches[0];
+            mUp();
+        // }
     });
     $clickerSlider.on('touchmove', function (event) {       //hybem sa po slideri
-        var touch = event.originalEvent.touches[0];
-        mMove(touch.pageX);
-        return false;
+        // if (typeof event.originalEvent.touches !== 'undefined' && event.originalEvent.touches.length > 0) {
+            var touch = event.originalEvent.touches[0];
+            mMove(touch.pageX);
+            return false;
+        // }
     });
     
     
