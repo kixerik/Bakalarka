@@ -14,7 +14,11 @@ $(document).ready(function(){
 
 	$menuHead.click(function(){
 		if (!$(this).parent().hasClass('clicked')) {
+			$menuHead.each(function(){
+				$(this).parent().removeClass('clicked');
+			})
 			$(this).parent().addClass('clicked');
+			$(this).parent().parents('.plug-menu-item').addClass('clicked');		
 		}
 		else{
 			$(this).parent().removeClass('clicked');

@@ -1,3 +1,4 @@
+/*reset preddefinovanych stylov prehliadaca*/
 *	{
 	outline: 0px solid black;
 	margin: 0;
@@ -5,22 +6,15 @@
 }
 
 html {
-	box-sizing: border-box;
+    box-sizing:         border-box;
 }
 
-*, *:before, *:after {
-	box-sizing: inherit;
+*{ /**:before, *:after */
+    box-sizing:         inherit;
 }
 
 ul {
-	margin: 0;
-	padding: 0;
 	list-style-type: none;
-}
-
-body {
-	font-size: 100%;
-    line-height: 1.6875;
 }
 
 .left {

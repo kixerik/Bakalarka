@@ -1,11 +1,10 @@
 .plug-menu{
-	overflow: hidden;
-	max-height: 0;
-	transition: max-height 0.5s ease-in-out;
+	width: 100%;
+	display: none;
 }
 
 .plug-menu.clicked{
-	max-height: 10000px;
+	display: block;
 }
 
 .plug-menu-roller {
@@ -13,12 +12,13 @@
 }
 
 .plug-menu-item > .plug-menu{
-	overflow: hidden;
-	max-height: 0;
-	transition: max-height 0.5s ease-in-out;
+	display: none;
+	position: absolute;
+  	width: 100%;
+  	z-index: 100;
 }
 .plug-menu-item.clicked > .plug-menu{
-	max-height: 10000px;
+	display: block;
 }
 
 @media (min-width: 800px) {
@@ -27,7 +27,7 @@
 	}
 
 	.plug-menu{
-		max-height: 10000px;
+		display: block;
 	}
 }
 
@@ -35,6 +35,7 @@
 	padding: 0 5% ;
 }
 
-.plug-menu-link {
+.plug-menu-item {
+	position: relative;
 	cursor: pointer;
 }
