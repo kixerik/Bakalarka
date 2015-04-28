@@ -107,6 +107,10 @@ $(document).ready(function(){
         }
         clicking = false;
     }
+
+
+
+    
     //---------ACTION LISTENERS
     $clickerSlider.mousedown(function( event ) {    //stlacim mys na slideri
         $slider = $(this);
