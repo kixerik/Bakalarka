@@ -69,9 +69,6 @@ $(document).ready(function(){
         }else{
             this.slide = 0;    //prvy slide
         }
-
-        // this.$slider.attr("slide",this.slide);
-        this.redrawSlide();
     }
     
     function prevSlide(){  //hyberm sa zo sliderom(mysou) doprava
@@ -80,9 +77,6 @@ $(document).ready(function(){
         }else{
             this.slide = this.maxSlide;   //posledny slide
         }
-
-        // this.$slider.attr("slide",this.slide);
-        this.redrawSlide();
     }
     
     function actionMouseDown(pageXmove){  //stlacim slider
@@ -124,6 +118,7 @@ $(document).ready(function(){
                 this.prevSlide();   //posuniem sa o slide doprava
             }
         }
+        this.redrawSlide();
         this.clicking = false;
     }
 
