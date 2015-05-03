@@ -159,7 +159,21 @@
 	max-height: 500px;
 }
 	
+.plug-slider-prev, 
+.plug-slider-next{
+	padding: 4% 15px;
+  	margin-top: -2%;
+  	background-color: #3F3F3F;
+  	color: white;
+  	opacity: 0.7;
+}
 
+.plug-slider-next {
+	border-radius: 10px 0px 0px 10px;
+}
+
+.plug-slider-prev {
+	border-radius: 0px 10px 10px 0px;
 
 	/*.plug-menu .plug-menu-item{
 		

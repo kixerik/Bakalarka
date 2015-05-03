@@ -7,6 +7,7 @@
 }
 
 .plug-slider{
+    position: relative;
     overflow: hidden;
 }
 
@@ -35,6 +36,26 @@
 .plug-slider-item{
     float: left;
     /*display: block;*/
-    cursor:pointer;
     text-align: center;
+    cursor:pointer;  
+}
+
+.plug-slider-prev,
+.plug-slider-next{
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.plug-slider-prev > img,
+.plug-slider-next > img{
+    width: 100%;
+}
+
+.plug-slider-prev{
+    left:0;
+}
+.plug-slider-next{
+    right: 0;
 }

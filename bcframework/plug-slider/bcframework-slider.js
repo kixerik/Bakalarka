@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
     var  $plugSlider = $('.plug-slider'),
+        $plugPrev = $plugSlider.find('.plug-slider-prev'),
+        $plugNext = $plugSlider.find('.plug-slider-next'),
         index = 0,
         zoznamSliderov = [];
 
@@ -15,11 +17,12 @@ $(document).ready(function(){
 
     function Slider(slider){
         this.$slider = slider,
-        this.$container = slider.find(".plug-slider-container"),   //obal vsetkych slidov
-        this.$item = slider.find(".plug-slider-item"),     //obal jedneho slidu
+        this.$container = slider.find(".plug-slider-container"),   //container pre polozky
+        this.$item = slider.find(".plug-slider-item"),     //polozky
         this.slide = parseInt(this.$slider.attr("slide")-1),    //aktialne zobrazeny slide cislovany od 0
         this.maxSlide = parseInt(this.$item.length-1),     //pocet slidov-1, lebo pocitame od 0
-        this.slideWidth = parseInt(slider.width());
+        this.slideWidth = parseInt(slider.width()),     //sirka jedneho slidu
+        this.distance,
 
         this.clicking = false,   //true ak drzim slider   
         this.mXclick = 0,    //aktualna x-ova pozicia kliknutia na obrazovke
@@ -80,8 +83,16 @@ $(document).ready(function(){
     }
     
     function actionMouseDown(pageXmove){  //stlacim slider
+        this.distance = 0;
         this.mXclick = pageXmove;        //
-        this.aTransform = parseInt( this.$container.css("transform").split(',')[4] );
+        if ( this.$container.css("-ms-transform") == null  ) {  //ie
+            if ( this.$container.css("transform") != null ) {   //firefox, chrome
+                this.aTransform = parseInt( this.$container.css("transform").split(',')[4] );
+            }
+            if ( this.$container.css("-webkit-transform") != null ) {   //safari
+                this.aTransform = parseInt( this.$container.css("-webkit-transform").split(',')[4] );
+            }
+        }
         this.clicking = true;    
         this.$container.css("-webkit-transition","0s");
         this.$container.css("-moz-transition","0s");
@@ -93,8 +104,9 @@ $(document).ready(function(){
         var transform,  //hodnota od laveho kraja na aku sa ma transformovat pri pohybe sliderom 
             rLimit = this.maxSlide*this.slideWidth; //pravy limit hodnoty transform
             lLimit = 0; //lavy limit hodnoty transform
+            this.distance = this.calculateDistance( this.mXclick, pageXmove );
         if( this.clicking == true ){     //je kliknute
-            transform = this.aTransform+this.calculateDistance( this.mXclick, pageXmove );   //priebezna hodnota pre efekt posuvania 
+            transform = this.aTransform+this.distance;   //priebezna hodnota pre efekt posuvania 
             if(transform > lLimit){     //posuvam za lavy okraj kde nic nieje
                 transform = lLimit;     //dalej za tento okraj neposuniem
             }
@@ -106,15 +118,15 @@ $(document).ready(function(){
             this.$container.css("-ms-transform","translate3d("+transform+"px, 0px, 0px)");   
             this.$container.css("transform","translate3d("+transform+"px, 0px, 0px)");  
         }
+        
     }
     
-    function actionMouseUp(pageXmove){     //pustim slider
-        var distance = this.calculateDistance( this.mXclick, pageXmove );
+    function actionMouseUp(){     //pustim slider
         if(this.clicking == true){
-            if(-distance > this.slideWidth/5){ //posuvanie slideru mysou vlavo o 1/5tinu?
+            if(-this.distance > this.slideWidth/5){ //posuvanie slideru mysou vlavo o 1/5tinu?
                 this.nextSlide();    //posuniem sa o slide dolava
             }
-            if(distance > this.slideWidth/5){ //posuvanie slideru mysou vpravo o 1/5tinu?
+            if(this.distance > this.slideWidth/5){ //posuvanie slideru mysou vpravo o 1/5tinu?
                 this.prevSlide();   //posuniem sa o slide doprava
             }
         }
@@ -137,29 +149,40 @@ $(document).ready(function(){
             val.actionMouseUp(event.pageX);
         });  
     }); 
+    $plugPrev.bind( "click", function() {
+        zoznamSliderov[$(this).closest('.plug-slider').attr("id")].prevSlide();
+        zoznamSliderov[$(this).closest('.plug-slider').attr("id")].redrawSlide()
+    });
+    $plugNext.bind( "click", function() {
+        zoznamSliderov[$(this).closest('.plug-slider').attr("id")].nextSlide();
+        zoznamSliderov[$(this).closest('.plug-slider').attr("id")].redrawSlide()
+    });
 
 
 
-    //MOBILE
+    //MOBILE ACTION LISTENERS
     $plugSlider.on('touchstart click', function (event) {    //stlacim na slider
-        // if (typeof event.originalEvent.touches !== 'undefined' && event.originalEvent.touches.length > 0) {
+        try {
             var touch = event.originalEvent.touches[0];
             zoznamSliderov[$(this).attr("id")].actionMouseDown(touch.pageX);
-        // }
+        }
+        catch(err){}
     });
     $plugSlider.on('touchend', function (event) {        //pustim slider
-        // if (typeof event.originalEvent.touches !== 'undefined' && event.originalEvent.touches.length > 0) {
+        try {
             var touch = event.originalEvent.touches[0];
-            zoznamSliderov[$(this).attr("id")].actionMouseUp(touch.pageX); 
-        // }
+            zoznamSliderov[$(this).attr("id")].actionMouseUp(); 
+        }
+        catch(err){}
     });
     $plugSlider.on('touchmove', function (event) {       //hybem sa po slideri
-        // if (typeof event.originalEvent.touches !== 'undefined' && event.originalEvent.touches.length > 0) {
+        try {
             var touch = event.originalEvent.touches[0];
             zoznamSliderov[$(this).attr("id")].actionMouseMove(touch.pageX); 
             this.updateScroll(touch.pageY);
             return false;
-        // }
+        }
+        catch(err){}
     });
     
     
@@ -175,6 +198,7 @@ $(document).ready(function(){
         });
     });
 
+    //pri prvom nacitani
     $.each(zoznamSliderov, function(index, val) {
              val.actionResize();
     });
