@@ -3,22 +3,27 @@ $(document).ready(function(){
     var  $plugSlider = $('.plug-slider'),
         $plugPrev = $plugSlider.find('.plug-slider-prev'),
         $plugNext = $plugSlider.find('.plug-slider-next'),
-        index = 0,
+        $plugButton = $plugSlider.find('.plug-slider-button'),
+        indexSlider = 0,
+        indexButtons = 0,
         zoznamSliderov = [];
 
     $plugSlider.each(function() {
-         $(this).attr('id', index);
+         $(this).attr('id', indexSlider);
          if($(this).attr('slide') == undefined){
             $(this).attr('slide','1');
          }
-         zoznamSliderov[index] = new Slider($(this));
-         index++;
+         zoznamSliderov[indexSlider] = new Slider($(this));
+         zoznamSliderov[indexSlider].initButtons();
+         indexButtons = 0;
+         indexSlider++;
     });
 
     function Slider(slider){
         this.$slider = slider,
         this.$container = slider.find(".plug-slider-container"),   //container pre polozky
         this.$item = slider.find(".plug-slider-item"),     //polozky
+        this.$button = slider.find('.plug-slider-button'),
         this.slide = parseInt(this.$slider.attr("slide")-1),    //aktialne zobrazeny slide cislovany od 0
         this.maxSlide = parseInt(this.$item.length-1),     //pocet slidov-1, lebo pocitame od 0
         this.slideWidth = parseInt(slider.width()),     //sirka jedneho slidu
@@ -28,6 +33,8 @@ $(document).ready(function(){
         this.mXclick = 0,    //aktualna x-ova pozicia kliknutia na obrazovke
         this.aTransform = 0; //finalna hodnota transformu po pusteni mysi(posunuti slidera) 
 
+        this.setSlide = setSlide;
+        this.initButtons = initButtons;
         this.updateScroll = updateScroll;
         this.redrawSlide = redrawSlide;
         this.calculateDistance = calculateDistance;
@@ -39,27 +46,42 @@ $(document).ready(function(){
         this.actionResize = actionResize;
     }
         
+    function initButtons(){
+        this.$button.each(function(index) {
+            $(this).attr("id", index);
+        });
+        indexButtons++;
+    }
+
     function actionResize(){
         this.slideWidth = parseInt(this.$slider.width());
         this.$item.css("width",this.slideWidth)
         this.$container.css("width",this.$item.length*this.slideWidth);
-        this.redrawSlide();
+        this.redrawSlide(false);
     }
 
     function updateScroll(e){
         $(window).scrollTop($(window).scrollTop() + (clickY - e.pageY));
     }
         
-    function redrawSlide(){
+    function redrawSlide(animate){
+        if (animate) {
+            this.$container.css("-webkit-transition","1s");
+            this.$container.css("-moz-transition","1s");
+            this.$container.css("-ms-transition","1s"); 
+            this.$container.css("transition","1s"); 
+        }else{
+            this.$container.css("-webkit-transition","0s");
+            this.$container.css("-moz-transition","0s");
+            this.$container.css("-ms-transition","0s"); 
+            this.$container.css("transition","0s"); 
+        };
             this.aTransform = this.slide*(-this.slideWidth);   //hodnota transformu pre zobrazenie slidu v premenej slide
             this.$container.css("-webkit-transform","translate3d("+this.aTransform+"px, 0px, 0px)");
             this.$container.css("-moz-transform","translate3d("+this.aTransform+"px, 0px, 0px)");                
             this.$container.css("-ms-transform","translate3d("+this.aTransform+"px, 0px, 0px)");   
             this.$container.css("transform","translate3d("+this.aTransform+"px, 0px, 0px)"); 
-            this.$container.css("-webkit-transition","1s");
-            this.$container.css("-moz-transition","1s");
-            this.$container.css("-ms-transition","1s"); 
-            this.$container.css("transition","1s"); 
+            
     }
 
     function calculateDistance(mouseXclick, mouseX) {
@@ -80,6 +102,12 @@ $(document).ready(function(){
         }else{
             this.slide = this.maxSlide;   //posledny slide
         }
+    }
+
+    function setSlide(position){
+        if ( position >= 0 && position <= this.maxSlide+1) {
+            this.slide = position;
+        };
     }
     
     function actionMouseDown(pageXmove){  //stlacim slider
@@ -130,7 +158,7 @@ $(document).ready(function(){
                 this.prevSlide();   //posuniem sa o slide doprava
             }
         }
-        this.redrawSlide();
+        this.redrawSlide(true);
         this.clicking = false;
     }
 
@@ -151,11 +179,15 @@ $(document).ready(function(){
     }); 
     $plugPrev.bind( "click", function() {
         zoznamSliderov[$(this).closest('.plug-slider').attr("id")].prevSlide();
-        zoznamSliderov[$(this).closest('.plug-slider').attr("id")].redrawSlide()
+        zoznamSliderov[$(this).closest('.plug-slider').attr("id")].redrawSlide(true);
     });
     $plugNext.bind( "click", function() {
         zoznamSliderov[$(this).closest('.plug-slider').attr("id")].nextSlide();
-        zoznamSliderov[$(this).closest('.plug-slider').attr("id")].redrawSlide()
+        zoznamSliderov[$(this).closest('.plug-slider').attr("id")].redrawSlide(true);
+    });
+    $plugButton.bind( "click", function() {
+        zoznamSliderov[$(this).closest('.plug-slider').attr("id")].setSlide(parseInt($(this).attr("id")));
+        zoznamSliderov[$(this).closest('.plug-slider').attr("id")].redrawSlide(true);
     });
 
 

@@ -174,7 +174,14 @@
 
 .plug-slider-prev {
 	border-radius: 0px 10px 10px 0px;
-
+}
 	/*.plug-menu .plug-menu-item{
 		
 	}*/
+.plug-slider-button {
+	background-color: #3F3F3F;
+  	color: white;
+  	opacity: 0.7;
+  	border-radius: 5px;
+  	 padding: 10px 10px;
+}

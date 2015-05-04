@@ -9,6 +9,10 @@
 .plug-slider{
     position: relative;
     overflow: hidden;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .plug-slider-container{
@@ -58,4 +62,23 @@
 }
 .plug-slider-next{
     right: 0;
+}
+
+
+.plug-slider-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+}
+
+.plug-slider-button {
+    display: inline-block;
+    margin-right: 7px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.plug-slider-dots > ul {
+    position: relative;
+    left: -50%; 
 }

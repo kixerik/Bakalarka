@@ -23,6 +23,27 @@ ul {
 	display: none;
 }
 
+/*visible*/
+.visible-small, /*odkryvam nad 400px*/
+.visible-medium, /*odkryvam nad 800px*/
+.visible-large {	 /*odkryvam nad 1200px*/
+	display: initial;
+}
+
+/*definujem maximalnu sirku elementu*/
+.max-size-800 {	
+	max-width: 800px;
+	margin: auto;
+}	
+.max-size-1000 {	
+	max-width: 1000px;
+	margin: auto;
+}	
+.max-size-1200 {	
+	max-width: 1200px;
+	margin: auto;
+}
+
 /*layout*/
 [class*="coll"] {
 	width: 100%;
@@ -175,6 +196,10 @@ ul {
 		display: initial;
 	}
 
+	.visible-small {
+		display: none;
+	} /*odkryvam nad 800px*/
+
 	/*layout*/
 	/*upravujem iba stlpce 2*/
 	.coll-1-2 { 	 width: 49.200000%; }
@@ -200,22 +225,11 @@ ul {
 	.hidden-medium {	/*odkryvam element nad 800px*/
 		display: initial;
 	}
+	.visible-medium {	/*odkryvam element nad 800px*/
+		display: none;
+	}
 
-	/*od tejto velkosti definujem maximalnu sirku celeho webu*/
-	.max-size-800 {	
-		max-width: 800px;
-		margin: 0.3% auto;
-	}
-	
-	.max-size-1000 {	
-		max-width: 1000px;
-		margin: 0.3% auto;
-	}
-	
-	.max-size-1200 {	
-		max-width: 1200px;
-		margin: 0.3% auto;
-	}
+
 
 	/*layout*/
 	 /*upravujem ostatne velkosti stlpcov*/
@@ -325,5 +339,8 @@ ul {
 	/*hiddens*/
 	.hidden-large {	/*odkryvam element nad 800px*/
 		display: initial;
+	}
+	.visible-large {	/*odkryvam element nad 800px*/
+		display: none;
 	}
 }
